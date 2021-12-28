@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 function Board() {
-  const [cards, setCards] = useState([1, 2, 3]);
+  const [cards, setCards] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
 
   const click = () => {
     const map1 = (cards.map((x) => x));
@@ -9,9 +9,11 @@ function Board() {
   }
 
   return (
-    <div>
-      {cards.map((x) => <div className='square'>{x}</div>)}
+    <div className='main'>
       <button onClick={click}>Click</button>
+      <div className='container'>
+        {cards.map((x) => <div className='cell'>{x}</div>)}
+      </div>
     </div>
   )
 }
