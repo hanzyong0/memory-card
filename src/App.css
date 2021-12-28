@@ -60,3 +60,12 @@ body,
 .cell:hover {
 	transform: scale(1.05);
 }
+
+.image {
+	height: 120px;
+}
+
+p {
+	font-weight: 500;
+	font-size: 1.3em;
+}
