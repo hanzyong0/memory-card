@@ -30,13 +30,40 @@ function Board() {
     { image: Alakazam, name: 'Alakazam' },
   ]);
 
-  const click = () => {
+  // States
+  const [current, setCurrent] = useState([]);
+  const [score, setScore] = useState(0);
+  const [highScore, setHighScore] = useState(0);
+
+  // Shuffle cards
+  const shuffle = () => {
     const map1 = (cards.map((x) => x));
     setCards(map1.sort(() => (Math.random() - 0.5)));
   };
 
+  // Click to shuffle and run game logic
+  const click = (e) => {
+    shuffle();
+    playGame(e.currentTarget.id);
+  }
+
+  const playGame = (pokemon) => {
+    if (current.includes(pokemon)) {
+      setCurrent([]);
+      setScore(0);
+    } else {
+      if (score >= highScore) {
+        setHighScore(highScore + 1);
+      }
+      setScore(score + 1);
+      setCurrent(current.concat(pokemon));
+
+    }
+  }
+
+  // Invoke when components mount
   useEffect(() => {
-    click();
+    shuffle();
   }, []);
 
   return (
@@ -44,13 +71,13 @@ function Board() {
       <Instruction />
       <div className='container'>
         {cards.map((x) =>
-          <div className='cell' key={x.name} onClick={click}>
+          <div className='cell' id={x.name} key={x.name} onClick={click}>
             <img className='image' alt={x.name} src={x.image}></img>
             <p>{x.name}</p>
           </div>
         )}
       </div>
-      <Score />
+      <Score score={score} highScore={highScore} />
     </div>
   )
 }

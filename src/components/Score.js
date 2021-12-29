@@ -1,10 +1,11 @@
 import React from 'react'
 
-function Score() {
+function Score(props) {
+  const { score, highScore } = props;
   return (
     <div className='score'>
-      <div>Current Score: </div>
-      <div>High Score: </div>
+      <div>Current Score: {score}</div>
+      <div>High Score : {highScore}</div>
     </div>
   )
 }
