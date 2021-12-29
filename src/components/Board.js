@@ -11,6 +11,8 @@ import Blastoise from '../assets/blastoise.png';
 import Abra from '../assets/abra.png';
 import Kadabra from '../assets/kadabra.png';
 import Alakazam from '../assets/alakazam.png';
+import Instruction from './Instruction';
+import Score from './Score';
 
 function Board() {
   const [cards, setCards] = useState([
@@ -39,6 +41,7 @@ function Board() {
 
   return (
     <div className='main'>
+      <Instruction />
       <div className='container'>
         {cards.map((x) =>
           <div className='cell' key={x.name} onClick={click}>
@@ -47,6 +50,7 @@ function Board() {
           </div>
         )}
       </div>
+      <Score />
     </div>
   )
 }
