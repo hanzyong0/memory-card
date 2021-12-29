@@ -86,7 +86,7 @@ body,
 
 .score {
 	margin: 50px 0;
-	width: 180px;
+	width: 200px;
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
